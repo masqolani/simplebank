@@ -7,6 +7,7 @@ createdb:
 dropdb:
 	docker exec -it postgres15 dropdb simple_bank
 
+# ssl mode in postgres container doesn't enable SSL by default so we need to add SSL mode
 migrateup:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
 
